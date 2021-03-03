@@ -1,0 +1,8 @@
+FROM tiangolo/uwsgi-nginx-flask:latest
+
+ADD ./build_data/requirements/webserver.txt ./app/requirements.txt
+RUN pip3 install -r ./app/requirements.txt
+
+COPY ./src /app
+COPY ./src/webserver/uwsgi.ini /app
+COPY ./src/webserver/nginx.conf /app

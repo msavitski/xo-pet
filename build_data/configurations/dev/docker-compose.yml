@@ -1,0 +1,38 @@
+version: "3.0"
+services:
+  webserver:
+    image: webserver
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Minsk
+    env_file:
+      - .env
+      - secrets.env
+    ports:
+      - $WEBSERVER_PORT:443
+    networks:
+      - default
+    volumes:
+      - './src/webserver:/app/webserver'
+    build:
+      context: .
+      dockerfile: build_data/dockerfiles/webserver_dockerfile
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+      - secrets.env
+    ports:
+      - $DB_PORT:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - default
+
+networks:
+  default: null
+
+volumes:
+  postgres-data: null
