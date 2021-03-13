@@ -19,6 +19,7 @@ services:
       dockerfile: build_data/dockerfiles/webserver_dockerfile
 
   db:
+    container_name: postgres
     image: postgres:latest
     restart: unless-stopped
     env_file:

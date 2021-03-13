@@ -1,9 +1,17 @@
 from flask import Flask, request, Response
+from flask_jwt_extended import JWTManager, jwt_required
 from flask_cors import CORS
 import json
+import os
 
 
 app = Flask(__name__)
+jwt = JWTManager(app)
+app.config["JWT_SECRET_KEY"] = os.environ["JWT_SECRET_KEY"]
+
+from webserver.user import user as user_blueprint
+app.register_blueprint(user_blueprint)
+
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)
 
