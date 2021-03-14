@@ -7,3 +7,5 @@ pymysql==0.9.3
 sqlalchemy==1.4.2
 pyopenssl==19.1.0
 psycopg2-binary==2.8.6
+alembic==1.5.7
+redis==3.5.3

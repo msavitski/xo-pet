@@ -10,7 +10,9 @@ jwt = JWTManager(app)
 app.config["JWT_SECRET_KEY"] = os.environ["JWT_SECRET_KEY"]
 
 from webserver.user import user as user_blueprint
+from webserver.game import game as game_blueprint
 app.register_blueprint(user_blueprint)
+app.register_blueprint(game_blueprint)
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)

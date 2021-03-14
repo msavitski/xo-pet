@@ -54,6 +54,7 @@ def update_user():
             password (str): user password
 
         Return:
+            401: authentication false
             404: incorrect user email
             200: user update successfully
     """
@@ -84,6 +85,7 @@ def get_users():
            Optional JSON Parameters:
                email (str): user email
            Return:
+               401: authentication false
                404: incorrect user email
                200: user info
     """
